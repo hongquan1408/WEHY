@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3D43AC6D-3962-4159-A6E0-41BBE030FF98}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WEHY</RootNamespace>
+    <AssemblyName>WEHY</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LiveCharts">
+      <HintPath>..\packages\LiveCharts.0.9.3.5\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms">
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.3.5\lib\net45\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.3.5\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\Common\RecentProjectCommon.cs" />
+    <Compile Include="Controllers\EditConfigController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\NewProjectController.cs" />
+    <Compile Include="Controllers\RunProcessController.cs" />
+    <Compile Include="Controllers\SaveAsController.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Config\EditConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Config\EditConfig.Designer.cs">
+      <DependentUpon>EditConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Draw\HCHillFlow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Draw\HCHillFlow.Designer.cs">
+      <DependentUpon>HCHillFlow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Draw\HCHydroOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Draw\HCHydroOut.Designer.cs">
+      <DependentUpon>HCHydroOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Draw\HCRInflow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Draw\HCRInflow.Designer.cs">
+      <DependentUpon>HCRInflow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Draw\HillFlow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Draw\HillFlow.Designer.cs">
+      <DependentUpon>HillFlow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Draw\HydroOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Draw\HydroOut.Designer.cs">
+      <DependentUpon>HydroOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Draw\LVHillFlow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Draw\LVHillFlow.Designer.cs">
+      <DependentUpon>LVHillFlow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Draw\LVHydroOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Draw\LVHydroOut.Designer.cs">
+      <DependentUpon>LVHydroOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Draw\LVRInFlow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Draw\LVRInFlow.Designer.cs">
+      <DependentUpon>LVRInFlow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Draw\RInflow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Draw\RInflow.Designer.cs">
+      <DependentUpon>RInflow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\File\NewProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\File\NewProject.Designer.cs">
+      <DependentUpon>NewProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\File\SaveProjectAs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\File\SaveProjectAs.Designer.cs">
+      <DependentUpon>SaveProjectAs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Preprocessing\Geomorphology.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Preprocessing\Geomorphology.Designer.cs">
+      <DependentUpon>Geomorphology.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Preprocessing\landusecover.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Preprocessing\landusecover.Designer.cs">
+      <DependentUpon>landusecover.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Preprocessing\soil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Preprocessing\soil.Designer.cs">
+      <DependentUpon>soil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Run\ComprehensiveSimulation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Run\ComprehensiveSimulation.Designer.cs">
+      <DependentUpon>ComprehensiveSimulation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Run\RoutingSimulation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Run\RoutingSimulation.Designer.cs">
+      <DependentUpon>RoutingSimulation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Run\RunProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Run\RunProcess.Designer.cs">
+      <DependentUpon>RunProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Run\ConfigRiverChannel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Run\ConfigRiverChannel.Designer.cs">
+      <DependentUpon>ConfigRiverChannel.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Views\Config\EditConfig.resx">
+      <DependentUpon>EditConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Draw\HCHillFlow.resx">
+      <DependentUpon>HCHillFlow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Draw\HCHydroOut.resx">
+      <DependentUpon>HCHydroOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Draw\HCRInflow.resx">
+      <DependentUpon>HCRInflow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Draw\HillFlow.resx">
+      <DependentUpon>HillFlow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Draw\HydroOut.resx">
+      <DependentUpon>HydroOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Draw\LVHillFlow.resx">
+      <DependentUpon>LVHillFlow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Draw\LVHydroOut.resx">
+      <DependentUpon>LVHydroOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Draw\LVRInFlow.resx">
+      <DependentUpon>LVRInFlow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Draw\RInflow.resx">
+      <DependentUpon>RInflow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\File\NewProject.resx">
+      <DependentUpon>NewProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\File\SaveProjectAs.resx">
+      <DependentUpon>SaveProjectAs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Preprocessing\Geomorphology.resx">
+      <DependentUpon>Geomorphology.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Preprocessing\landusecover.resx">
+      <DependentUpon>landusecover.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Run\ComprehensiveSimulation.resx">
+      <DependentUpon>ComprehensiveSimulation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Run\ConfigRiverChannel.resx">
+      <DependentUpon>ConfigRiverChannel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Run\RoutingSimulation.resx">
+      <DependentUpon>RoutingSimulation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Run\RunProcess.resx">
+      <DependentUpon>RunProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dia-chi.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GsUvzuv.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\explorer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grey_new_seo-05-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1_38-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Data-Export-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WEHY.Business\WEHY.Business.csproj">
+      <Project>{59324152-b343-4dd7-a164-a6bfe379cb43}</Project>
+      <Name>WEHY.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WEHY.Config\WEHY.Config.csproj">
+      <Project>{ec147023-0caa-4ae9-a150-b6ca90b1fd9c}</Project>
+      <Name>WEHY.Config</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Html\boost.js" />
+    <Content Include="Views\Html\exporting.js" />
+    <Content Include="Views\Html\highcharts.js" />
+    <Content Include="Views\Html\HillFlow.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Html\HydroOut.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Html\jquery-1.11.2.min.js" />
+    <Content Include="Views\Html\loading.gif" />
+    <Content Include="Views\Html\RInFlow.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -244,7 +244,6 @@ namespace WEHY.Views.Draw
             w.WriteLine("title: {");
             w.WriteLine("text: 'Graph In Flow'");
             w.WriteLine("},");
-
             w.WriteLine(" xAxis: {");
             w.WriteLine(" type: 'datetime',");
             w.WriteLine(" tickInterval: 7 * 24 * 3600 * 1000,");

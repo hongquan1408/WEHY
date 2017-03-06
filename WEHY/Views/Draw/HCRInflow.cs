@@ -60,7 +60,6 @@ namespace WEHY.Views.Draw
                                         LtsStartIndexGroup.Add(i);
                                     }
                                 }
-
                                 LtsData.Add(Convert.ToInt32(values[LtsStartIndexGroup[Type]]));
                                 for (int j = LtsStartIndexGroup[Type] + 1; j < CountValue; j++)
                                 {

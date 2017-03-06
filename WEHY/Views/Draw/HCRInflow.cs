@@ -26,61 +26,87 @@ namespace WEHY.Views.Draw
         {
             InitializeComponent();
             rbUpstream.Checked = false;
+           
         }
         /// <summary>
         /// Bind data to combobox
         /// </summary>
-        private void BindFlowToCombobox(int Type, List<int> LtsData)
+        public void BindFlowToCombobox(int Type, List<int> LtsData)
         {
             LtsStartIndexGroup = new List<int>();
-            string fileName = @"" + OutputFile + "\\outputs\\R_inflow.csv";
-            LtsUpStream = new List<int>();
-            LtsLateral = new List<int>();
-            string line = string.Empty;
-            try
+            if (!string.IsNullOrEmpty(OutputFile))
             {
-                using (var fs = System.IO.File.OpenRead(fileName))
-                using (var reader = new StreamReader(fs))
+                string fileName = @"" + OutputFile + "\\outputs\\R_inflow.csv";
+                string line = string.Empty;
+                try
                 {
-                    while (!reader.EndOfStream)
+                    using (var fs = System.IO.File.OpenRead(fileName))
+                    using (var reader = new StreamReader(fs))
                     {
-                        line = reader.ReadLine();
-                        var values = line.Split(',');
-                        Count++;
-
-                        int CountValue = values.Count();
-                        if (values[0].ToString().Contains("SEQ"))
+                        while (!reader.EndOfStream)
                         {
+                            line = reader.ReadLine();
+                            var values = line.Split(',');
+                            Count++;
 
-                            for (int i = 1; i < CountValue; i++)
+                            int CountValue = values.Count();
+                            if (values[0].ToString().Contains("SEQ"))
                             {
-                                if (values[i] == "1")
-                                {
-                                    LtsStartIndexGroup.Add(i);
-                                }
-                            }
 
-                            LtsData.Add(Convert.ToInt32(values[LtsStartIndexGroup[Type]]));
-                            for (int j = LtsStartIndexGroup[Type] + 1; j < CountValue; j++)
-                            {
-                                if (values[j] == values[LtsStartIndexGroup[Type]])
-                                    break;
-                                else
+                                for (int i = 1; i < CountValue; i++)
                                 {
-                                    LtsData.Add(Convert.ToInt32(values[j]));
+                                    if (values[i].Trim() == "1")
+                                    {
+                                        LtsStartIndexGroup.Add(i);
+                                    }
                                 }
-                            }
 
-                            break;
+                                LtsData.Add(Convert.ToInt32(values[LtsStartIndexGroup[Type]]));
+                                for (int j = LtsStartIndexGroup[Type] + 1; j < CountValue; j++)
+                                {
+                                    if (values[j].Trim() == values[LtsStartIndexGroup[Type]].Trim() || string.IsNullOrEmpty(values[j].Trim()))
+                                        break;
+                                    else
+                                    {
+                                        LtsData.Add(Convert.ToInt32(values[j].Trim()));
+                                    }
+                                }
+
+                                break;
+                            }
                         }
                     }
+                    BindToComboboxInFlow(LtsData);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
+        /// <summary>
+        /// Bind dư liệu flow
+        /// </summary>
+        /// <param name="LtsData"></param>
+        private void BindToComboboxInFlow(List<int> LtsData)
+        {
+            LtsRiver = new List<Lookup> { new Lookup { ID = 0, Title = "Select In Flow" } };
+            Lookup river;
+
+            foreach (var item in LtsData)
+            {
+                river = new Lookup { ID = item, Title = "In Flow " + item };
+                LtsRiver.Add(river);
+            }
+            cbbInflow.DataSource = LtsRiver;
+            cbbInflow.DisplayMember = "Title";
+            cbbInflow.ValueMember = "ID";
+        }
+        /// <summary>
+        /// Close form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -98,17 +124,7 @@ namespace WEHY.Views.Draw
                 LtsUpStream = new List<int>();
                 BindFlowToCombobox(0,LtsUpStream);
 
-                LtsRiver = new List<Lookup> { new Lookup { ID = 0, Title = "Select In Flow" } };
-                Lookup river;
-
-                foreach (var item in LtsUpStream)
-                {
-                    river = new Lookup { ID = item, Title = "In Flow " + item };
-                    LtsRiver.Add(river);
-                }
-                cbbInflow.DataSource = LtsRiver;
-                cbbInflow.DisplayMember = "Title";
-                cbbInflow.ValueMember = "ID";
+                
             }
 
         }
@@ -124,16 +140,7 @@ namespace WEHY.Views.Draw
                 rbUpstream.Checked = false;
                 LtsLateral = new List<int>();
                 BindFlowToCombobox(1, LtsLateral);
-                LtsRiver = new List<Lookup> { new Lookup { ID = 0, Title = "Select In Flow" } };
-                Lookup river;
-                foreach (var item in LtsLateral)
-                {
-                    river = new Lookup { ID = item, Title = "In Flow " + item };
-                    LtsRiver.Add(river);
-                }
-                cbbInflow.DataSource = LtsRiver;
-                cbbInflow.DisplayMember = "Title";
-                cbbInflow.ValueMember = "ID";
+               
             }
 
         }
@@ -163,7 +170,7 @@ namespace WEHY.Views.Draw
 
                         line = reader.ReadLine();
                         var values = line.Split(',');
-                        if (countData > Count && double.TryParse(values[0], out value))
+                        if (countData > Count && double.TryParse(values[0].Trim(), out value))
                         {
                             if (value > 0)
                             {

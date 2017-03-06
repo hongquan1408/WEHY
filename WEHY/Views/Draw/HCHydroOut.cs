@@ -17,7 +17,7 @@ namespace WEHY.Views.Draw
     {
         public List<Lookup> LtsRiver { get; set; }
         public List<Lookup> LtsType { get; set; }
-        
+
         public List<DataFlow> LtsDataFlow { get; set; }
         public string OutputFile { get; set; }
         public List<int> LtsStartIndexGroup { get; set; }
@@ -28,9 +28,7 @@ namespace WEHY.Views.Draw
 
             InitializeComponent();
             BindTypeToCombobox();
-            cbbRiverFlow.DataSource = LtsRiver;
-            cbbRiverFlow.DisplayMember = "Title";
-            cbbRiverFlow.ValueMember = "ID";
+
             cbbType.DataSource = LtsType;
             cbbType.DisplayMember = "Title";
             cbbType.ValueMember = "ID";
@@ -107,7 +105,7 @@ namespace WEHY.Views.Draw
         private void BindRiverToCombobox(int Type, List<int> LtsData)
         {
             LtsStartIndexGroup = new List<int>();
-            string fileName = @"" + OutputFile + "\\outputs\\R_inflow.csv";
+            string fileName = @"" + OutputFile + "\\outputs\\R_hydro_out.csv";
             string line = string.Empty;
             try
             {
@@ -126,7 +124,7 @@ namespace WEHY.Views.Draw
 
                             for (int i = 1; i < CountValue; i++)
                             {
-                                if (values[i] == "1")
+                                if (values[i].Trim() == "1")
                                 {
                                     LtsStartIndexGroup.Add(i);
                                 }
@@ -135,11 +133,11 @@ namespace WEHY.Views.Draw
                             LtsData.Add(Convert.ToInt32(values[LtsStartIndexGroup[Type]]));
                             for (int j = LtsStartIndexGroup[Type] + 1; j < CountValue; j++)
                             {
-                                if (values[j] == values[LtsStartIndexGroup[Type]])
+                                if (values[j].Trim() == values[LtsStartIndexGroup[Type]].Trim() || string.IsNullOrEmpty(values[j].Trim()))
                                     break;
                                 else
                                 {
-                                    LtsData.Add(Convert.ToInt32(values[j]));
+                                    LtsData.Add(Convert.ToInt32(values[j].Trim()));
                                 }
                             }
 
@@ -268,6 +266,31 @@ namespace WEHY.Views.Draw
         {
             this.Close();
         }
-       
+        /// <summary>
+        /// Change data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbbType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbType.SelectedIndex > 0)
+            {
+                List<int> LtsData = new List<int>();
+                LtsRiver = new List<Lookup> { new Lookup { ID = 0, Title = "Select In Flow" } };
+                Lookup river;
+
+
+                BindRiverToCombobox(cbbType.SelectedIndex, LtsData);
+                foreach (var item in LtsData)
+                {
+                    river = new Lookup { ID = item, Title = "In Flow " + item };
+                    LtsRiver.Add(river);
+                }
+                cbbRiverFlow.DataSource = LtsRiver;
+                cbbRiverFlow.DisplayMember = "Title";
+                cbbRiverFlow.ValueMember = "ID";
+            }
+        }
+
     }
 }

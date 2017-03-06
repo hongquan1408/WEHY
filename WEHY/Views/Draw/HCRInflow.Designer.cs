@@ -87,8 +87,9 @@
             this.rbLateral.Location = new System.Drawing.Point(133, 50);
             this.rbLateral.Name = "rbLateral";
             this.rbLateral.Size = new System.Drawing.Size(57, 17);
-            this.rbLateral.TabIndex = 1;
+            this.rbLateral.TabIndex = 2;
             this.rbLateral.TabStop = true;
+            
             this.rbLateral.Text = "Lateral";
             this.rbLateral.UseVisualStyleBackColor = true;
             this.rbLateral.CheckedChanged += new System.EventHandler(this.rbLateral_CheckedChanged);
@@ -99,9 +100,10 @@
             this.rbUpstream.Location = new System.Drawing.Point(8, 50);
             this.rbUpstream.Name = "rbUpstream";
             this.rbUpstream.Size = new System.Drawing.Size(118, 17);
-            this.rbUpstream.TabIndex = 0;
+            this.rbUpstream.TabIndex = 1;
             this.rbUpstream.TabStop = true;
             this.rbUpstream.Text = "Upstream Boundary";
+            
             this.rbUpstream.UseVisualStyleBackColor = true;
             this.rbUpstream.CheckedChanged += new System.EventHandler(this.rbUpstream_CheckedChanged);
             // 

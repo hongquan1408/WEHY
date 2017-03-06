@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-           
             this.btnClose = new System.Windows.Forms.Button();
             this.btnVisulize = new System.Windows.Forms.Button();
             this.cbbType = new System.Windows.Forms.ComboBox();
@@ -42,8 +41,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnNext);
-            this.groupBox1.Controls.Add(this.btnPrevious);
             this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.btnVisulize);
             this.groupBox1.Controls.Add(this.cbbType);
@@ -53,7 +50,6 @@
             this.groupBox1.Size = new System.Drawing.Size(200, 485);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-           
             // 
             // btnClose
             // 
@@ -78,15 +74,16 @@
             // cbbType
             // 
             this.cbbType.FormattingEnabled = true;
-            this.cbbType.Location = new System.Drawing.Point(9, 87);
+            this.cbbType.Location = new System.Drawing.Point(10, 40);
             this.cbbType.Name = "cbbType";
             this.cbbType.Size = new System.Drawing.Size(185, 21);
             this.cbbType.TabIndex = 1;
+            this.cbbType.SelectedIndexChanged += new System.EventHandler(this.cbbType_SelectedIndexChanged);
             // 
             // cbbRiverFlow
             // 
             this.cbbRiverFlow.FormattingEnabled = true;
-            this.cbbRiverFlow.Location = new System.Drawing.Point(9, 34);
+            this.cbbRiverFlow.Location = new System.Drawing.Point(10, 98);
             this.cbbRiverFlow.Name = "cbbRiverFlow";
             this.cbbRiverFlow.Size = new System.Drawing.Size(185, 21);
             this.cbbRiverFlow.TabIndex = 0;
@@ -132,8 +129,6 @@
         private System.Windows.Forms.ComboBox cbbType;
         private System.Windows.Forms.ComboBox cbbRiverFlow;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnPrevious;
-        private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.WebBrowser webBrowserChart;
     }
 }

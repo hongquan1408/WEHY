@@ -273,7 +273,7 @@ namespace WEHY.Views
                 {
 
                     Draw.HCHillFlow frmHillFlow = new Draw.HCHillFlow();
-
+                    
                     frmHillFlow.Show();
                     frmHillFlow.OutputFile = OutputFolder;
                     frmHillFlow.BindRiverToCombobox();
@@ -300,6 +300,7 @@ namespace WEHY.Views
                     Draw.HCRInflow frmRInFlow = new Draw.HCRInflow();
                     frmRInFlow.Show();
                     frmRInFlow.OutputFile = OutputFolder;
+                    frmRInFlow.BindFlowToCombobox(0, new List<int>());
                 }
             }
             catch (Exception ex)
